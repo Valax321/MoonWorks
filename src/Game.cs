@@ -107,8 +107,12 @@ namespace MoonWorks
 
 			Logger.InitSDLLogging();
 
+			/*
+			 * Used to be System.AppContext.BaseDirectory, but we should really be using the default of SDL_GetBasePath.
+			 * Mainly means that macos will use Resources/ instead of MacOS/ for loading title storage, which is more correct anyway.
+			 */
 			Logger.LogInfo("Initializing title storage...");
-			RootTitleStorage = new TitleStorage(System.AppContext.BaseDirectory);
+			RootTitleStorage = new TitleStorage();
 
 			Logger.LogInfo("Initializing user storage...");
 			UserStorage = new UserStorage(AppInfo);
