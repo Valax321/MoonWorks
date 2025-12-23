@@ -89,6 +89,15 @@ namespace MoonWorks
 				PreviousSleepTimes[i] = TimeSpan.FromMilliseconds(1);
 			}
 
+			// Set app metadata before calling SDL_Init
+			SDL.SDL_SetAppMetadata(AppInfo.ApplicationName, AppInfo.ApplicationVersion,
+				AppInfo.ApplicationIdentifier);
+			SDL.SDL_SetAppMetadataProperty(SDL.SDL_PROP_APP_METADATA_CREATOR_STRING,
+				AppInfo.OrganizationName);
+			SDL.SDL_SetAppMetadataProperty(SDL.SDL_PROP_APP_METADATA_COPYRIGHT_STRING,
+				AppInfo.Copyright);
+			SDL.SDL_SetAppMetadataProperty(SDL.SDL_PROP_APP_METADATA_TYPE_STRING, "game");
+
 			Logger.LogInfo("Initializing SDL...");
 			if (!SDL.SDL_Init(SDL.SDL_InitFlags.SDL_INIT_VIDEO | SDL.SDL_InitFlags.SDL_INIT_TIMER | SDL.SDL_InitFlags.SDL_INIT_GAMEPAD))
 			{
