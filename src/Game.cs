@@ -175,7 +175,7 @@ namespace MoonWorks
 			Logger.LogInfo("Cleaning up game...");
 			Destroy();
 
-			Logger.LogInfo($"Unclaiming and disposing windows...");
+			Logger.LogInfo("Unclaiming and disposing windows...");
 			foreach (var (id, window) in Window.IDToWindow)
 			{
 				GraphicsDevice.UnclaimWindow(window);
