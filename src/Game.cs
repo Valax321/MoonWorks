@@ -586,13 +586,13 @@ namespace MoonWorks
             Inputs.Mouse.AddButtonEvent(evt);
         }
 
-		public static void ShowRuntimeError(string title, string message)
+		public void ShowRuntimeError(string title, string message)
 		{
 			SDL.SDL_ShowSimpleMessageBox(
 				SDL.SDL_MessageBoxFlags.SDL_MESSAGEBOX_ERROR,
 				title ?? "",
 				message ?? "",
-				IntPtr.Zero
+				MainWindow?.Handle ?? IntPtr.Zero
 			);
 		}
 
